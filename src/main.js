@@ -1,4 +1,12 @@
-const API = 'https://api.thecatapi.com/v1/images/search';
+const API_KEY = 'live_FOeHChUkCQhNu2wqKiUbnXSbKIX7SmYtymORUh6GCc4M5rfbagsdUxLmK0KZJ08g';
+const API = [
+  'https://api.thecatapi.com/v1',
+  '/images/search',
+  '?limit=4',
+  `&api_key=${API_KEY}`
+].join('');
+// console.log(API);
+
 const img1 = document.querySelector('.img1');
 const img2 = document.querySelector('.img2');
 const img3 = document.querySelector('.img3');
@@ -19,7 +27,7 @@ async function fetchData(urlAPI) {
 }
 
 async function nuevoGato() {
-  const images = await fetchData(`${API}?limit=4`);
+  const images = await fetchData(API);
   const imageURL = images.map(image => image.url);
   
   img1.src = imageURL[0];
