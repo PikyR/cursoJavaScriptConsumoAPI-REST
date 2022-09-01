@@ -13,31 +13,32 @@ const API_RANDOM = [
 const API_FAVOURITES = [
   BASE_API_URL,
   "/favourites",
-  // `?api_key=${API_KEY}`,
+  `?api_key=${API_KEY}`,
 ].join("");
 // console.log(API_FAVOURITES);
 
 const imagesContainers = document.querySelectorAll(".card__image--main");
 const spanError = document.querySelector(".spanError");
 
-const btn = document.querySelector("button");
+const btn = document.querySelector(".main__button");
+const btnFavourite = document.querySelectorAll(".add-favourite");
+console.log(btnFavourite);
 
 btn.addEventListener("click", loadRandomCats);
+btnFavourite[0].addEventListener("click", addFavourite);
 
 async function fetchData(urlAPI) {
   try {
     const response = await fetch(urlAPI);
     const data = await response.json();
 
-    if (response.status !== 200) {
-      spanError.inner = `Error: ${response.status}`;
-    }
+    console.log(data); //temp
 
     return data;
   } catch (err) {
     console.log("Error name: " + err.name);
-    console.log("Error mesage: " + err.message);    
-    return spanError.innerText = `Algo a salido mal, inténtalo más tarde...`;
+    console.log("Error mesage: " + err.message);
+    return (spanError.innerText = `Algo a salido mal, inténtalo más tarde...`);
   }
 }
 
@@ -50,10 +51,26 @@ async function loadRandomCats() {
   });
 }
 
+async function addFavourite() {
+  const response = await fetch(API_FAVOURITES, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      // API-KEY
+    },
+    body: JSON.stringify({
+      image_id: "99f",
+    }),
+  });
+  const favorites = await response.json();
+
+  console.log('Add favourite func', favorites);
+}
+
 async function loadFavourites() {
   const favourites = await fetchData(API_FAVOURITES);
-  
-  // console.log('favoritos', favourites.length);
+
+  console.log('favoritos', favourites);
 }
 
 loadRandomCats();

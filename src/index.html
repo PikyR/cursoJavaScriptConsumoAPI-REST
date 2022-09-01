@@ -1,73 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Curso de Consumo de API REST con JS</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso de Consumo de API REST con JS</title>
 
-  <script defer src="./main.js"></script>
+    <script defer src="./main.js"></script>
 
-  <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: rgb(235, 235, 235);
-    }
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgb(235, 235, 235);
+      }
 
-    img {
-      width: 200px;
-      aspect-ratio: 1/1;
-      object-fit: cover;
-    }
+      img {
+        width: 200px;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+      }
 
-    main {
-      width: min-content;
-      margin: 20px;
-      display: grid;
-      grid-template: repeat(2, auto) / repeat(2, auto);
-      gap: 20px;
-    }
-  </style>
-</head>
-<body>
-  <h1 class="main-title">Curso de Consumo de API REST con JS</h1>
-  <span class="spanError">s</span>
-  <!-- Grilla -->
-  <main class="main">
-    <!-- 1 -->
-    <article class="card">
-      <img class="card__image card__image--main" alt="Gatito random">
-      <button class="card__button">Fav</button>
-    </article>
-    <!-- 2 -->
-    <article class="card">
-      <img class="card__image card__image--main" alt="Gatito random">
-      <button class="card__button">Fav</button>
-    </article>
-    <!-- 3 -->
-    <article class="card">
-      <img class="card__image card__image--main" alt="Gatito random">
-      <button class="card__button">Fav</button>
-    </article>
-    <!-- 4 -->
-    <article class="card">
-      <img class="card__image card__image--main" alt="Gatito random">
-      <button class="card__button">Fav</button>
-    </article>
-    
-    <button class="main__button">Nuevos gatitos</button>
-  </main>
-  
-  <!-- Favoritos -->
-  <section class="favorites">
-    <article class="card">
-      <img class="card__image" alt="Gatito random">
-      <button class="card__button">Fav</button>
-    </article>
-  </section>
+      main {
+        width: min-content;
+        margin: 20px;
+        display: grid;
+        grid-template: repeat(2, auto) / repeat(2, auto);
+        gap: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="main-title">Curso de Consumo de API REST con JS</h1>
+    <span class="spanError">s</span>
+    <!-- Grilla -->
+    <main class="main">
+      <!-- 1 -->
+      <article class="card">
+        <img class="card__image card__image--main" alt="Gatito random" />
+        <button class="card__button  add-favourite">Fav</button>
+      </article>
+      <!-- 2 -->
+      <article class="card">
+        <img class="card__image card__image--main" alt="Gatito random" />
+        <button class="card__button add-favourite">Fav</button>
+      </article>
+      <!-- 3 -->
+      <article class="card">
+        <img class="card__image card__image--main" alt="Gatito random" />
+        <button class="card__button add-favourite">Fav</button>
+      </article>
+      <!-- 4 -->
+      <article class="card">
+        <img class="card__image card__image--main" alt="Gatito random" />
+        <button class="card__button add-favourite">Fav</button>
+      </article>
 
-  <!-- Footer?? -->
-</body>
+      <button class="main__button">Nuevos gatitos</button>
+    </main>
+
+    <!-- Favoritos -->
+    <section class="favorites">
+      <article class="card">
+        <img class="card__image" alt="Gatito random" />
+        <button class="card__button">Fav</button>
+      </article>
+    </section>
+
+    <!-- Footer?? -->
+  </body>
 </html>
