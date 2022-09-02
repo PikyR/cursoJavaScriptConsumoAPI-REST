@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -14,6 +14,8 @@
         flex-direction: column;
         align-items: center;
         background-color: rgb(235, 235, 235);
+
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       }
 
       img {
@@ -29,11 +31,23 @@
         grid-template: repeat(2, auto) / repeat(2, auto);
         gap: 20px;
       }
+
+      .favourites-container {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        gap: 20px;
+      }
+
+      .card {
+        display: flex;
+        flex-direction: column;
+      }
+
     </style>
   </head>
   <body>
     <h1 class="main-title">Curso de Consumo de API REST con JS</h1>
-    <span class="spanError">s</span>
+    <span class="spanError"></span>
     <!-- Grilla -->
     <main class="main">
       <!-- 1 -->
@@ -61,11 +75,8 @@
     </main>
 
     <!-- Favoritos -->
-    <section class="favorites">
-      <article class="card">
-        <img class="card__image" alt="Gatito random" />
-        <button class="card__button">Fav</button>
-      </article>
+    <section class="favourites-container">
+      <h2>Favoritos</h2>      
     </section>
 
     <!-- Footer?? -->
