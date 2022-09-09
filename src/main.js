@@ -17,31 +17,80 @@ const API_FAVOURITES = [
 ].join("");
 
 const API_FAVOURITES_DELETE = (id) => {
-  return `${BASE_API_URL}/favourites/${id}?api_key=${API_KEY}`
+  return `${BASE_API_URL}/favourites/${id}?api_key=${API_KEY}`;
 };
-// console.log(1111,API_FAVOURITES_DELETE('11ELID22'));
 
-const imagesContainers = document.querySelectorAll(".card__image--main");
+let favouritesImagesIDs = [];
+
+const randomCatsContainer = document.querySelector("#random-cats-container");
 const favouritesContainer = document.querySelector(".favourites-container");
 const spanError = document.querySelector(".spanError");
-
 const btn = document.querySelector(".main__button");
-const btnFavourites = document.querySelectorAll(".add-favourite");
-// console.log(btnFavourite);
 
 btn.addEventListener("click", loadRandomCats);
-// btnFavourite[0].addEventListener("click", addFavourite);
 
 async function fetchData(urlAPI) {
   try {
     const response = await fetch(urlAPI);
-    const data = await response.json();    
+    const data = await response.json();
 
     return data;
   } catch (err) {
     console.log("Error name: " + err.name);
     console.log("Error mesage: " + err.message);
     return (spanError.innerText = `Algo a salido mal, inténtalo más tarde...`);
+  }
+}
+
+function renderRandomCats(data) {
+  const article = document.createElement("article");
+  article.classList.add("card");
+
+  const img = document.createElement("img");
+  img.classList.add("card__image");
+  img.src = data.url;
+
+  const btnAddFav = document.createElement("button");
+  btnAddFav.classList.add("card__button");
+
+  const btnAddFavText = document.createTextNode("Fav");
+  btnAddFav.appendChild(btnAddFavText);
+
+  article.append(img, btnAddFav);
+  //
+  btnAddFav.addEventListener("click", () => {
+    checkDuplicated(data.id);
+  });
+  //
+  randomCatsContainer.appendChild(article);
+}
+
+function renderFavourites(data, favouriteID) {
+  const article = document.createElement("article");
+  article.classList.add("card");
+
+  const img = document.createElement("img");
+  img.classList.add("card__image");
+  img.src = data.image.url;
+
+  const button = document.createElement("button");
+  button.classList.add("card__button");
+  button.addEventListener("click", () => deleteFavourite(favouriteID));
+
+  const buttonText = document.createTextNode("Delete");
+
+  button.appendChild(buttonText);
+  article.append(img, button);
+
+  favouritesContainer.appendChild(article);
+}
+
+function checkDuplicated(id) {
+  if (favouritesImagesIDs.some((favID) => favID === id)) {
+    alert("Ya esta en favoritos");
+    return;
+  } else {
+    addFavourite(id);
   }
 }
 
@@ -67,70 +116,34 @@ async function addFavourite(id) {
 
 async function deleteFavourite(id) {
   const response = await fetch(API_FAVOURITES_DELETE(id), {
-    method: 'DELETE'    
+    method: "DELETE",
   });
-  console.log('delete fav',response);
+  console.log("delete fav", response);
 
-  loadFavourites()
+  loadFavourites();
 }
 
 async function loadFavourites() {
   const favourites = await fetchData(API_FAVOURITES);
-  const favouritesURL = favourites.map(item => item.image.url);
-  const favouriteID = favourites.map(item => item.id);  
-  console.log('loadFav: ', favourites);
-
+  const favouritesIDs = favourites.map((item) => item.id);
+  favouritesImagesIDs = favourites.map((item) => item.image.id);
 
   favouritesContainer.innerHTML = "";
 
-  favouritesURL.forEach( (imageURL, i) => {
-
-    const article = document.createElement('article');
-    article.classList.add('card');
-
-    const img = document.createElement('img');
-    img.classList.add('card__image')
-    img.src = imageURL;
-    
-    const button = document.createElement('button');
-    button.classList.add('card__button');
-    button.addEventListener('click', () => deleteFavourite(favouriteID[i]));
-
-    const buttonText = document.createTextNode('Delete');
-
-    button.appendChild(buttonText);
-    article.append(img, button);
-
-    return favouritesContainer.appendChild(article);
+  favourites.forEach((favourite, i) => {
+    renderFavourites(favourite, favouritesIDs[i]);
   });
-
-  console.log('favoritos', favourites);
-  console.log('favoritos URL', favouritesURL);
 }
 
 async function loadRandomCats() {
-  const images = await fetchData(API_RANDOM);
-  const imagesURL = images.map((image) => image.url);
-  const randomCatsIDs = images.map(image => image.id);
-  console.log('desde load cats lista IDs ',randomCatsIDs);
+  const randomCats = await fetchData(API_RANDOM);
+  randomCatsContainer.innerHTML = "";
 
-  imagesContainers.forEach((container, i) => {
-    container.src = imagesURL[i];
+  randomCats.forEach((cat) => {
+    renderRandomCats(cat);
   });
 
-  btnFavourites.forEach((btn, i) => {
-    btn.addEventListener('click', () => {
-      addFavourite(randomCatsIDs[i])
-      console.log('desde load cats IDs, que tiene que ser una ',randomCatsIDs[i]);
-    });
-  })
-
-  // loadFavourites();
-  // console.log('images data', images);
-  // console.log('id', randomCatsIDs);
+  loadFavourites();
 }
 
-
-
 loadRandomCats();
-loadFavourites();

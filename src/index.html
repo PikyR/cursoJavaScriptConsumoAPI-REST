@@ -26,7 +26,10 @@
 
       main {
         width: min-content;
-        margin: 20px;
+        margin: 20px;        
+      }
+
+      #random-cats-container {
         display: grid;
         grid-template: repeat(2, auto) / repeat(2, auto);
         gap: 20px;
@@ -50,27 +53,9 @@
     <span class="spanError"></span>
     <!-- Grilla -->
     <main class="main">
-      <!-- 1 -->
-      <article class="card">
-        <img class="card__image card__image--main" alt="Gatito random" />
-        <button class="card__button  add-favourite">Fav</button>
-      </article>
-      <!-- 2 -->
-      <article class="card">
-        <img class="card__image card__image--main" alt="Gatito random" />
-        <button class="card__button add-favourite">Fav</button>
-      </article>
-      <!-- 3 -->
-      <article class="card">
-        <img class="card__image card__image--main" alt="Gatito random" />
-        <button class="card__button add-favourite">Fav</button>
-      </article>
-      <!-- 4 -->
-      <article class="card">
-        <img class="card__image card__image--main" alt="Gatito random" />
-        <button class="card__button add-favourite">Fav</button>
-      </article>
-
+      <section id='random-cats-container'>
+        <!-- random cats -->
+      </section>
       <button class="main__button">Nuevos gatitos</button>
     </main>
 
