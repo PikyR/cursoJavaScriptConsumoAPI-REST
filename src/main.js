@@ -3,21 +3,14 @@ const API_KEY =
 //
 const BASE_API_URL = "https://api.thecatapi.com/v1";
 
-const API_RANDOM = [
-  BASE_API_URL,
-  "/images/search",
-  "?limit=4",
-  `&api_key=${API_KEY}`,
-].join("");
+const API_RANDOM = [BASE_API_URL, "/images/search", "?limit=4"].join("");
 
-const API_FAVOURITES = [
-  BASE_API_URL,
-  "/favourites",
-  `?api_key=${API_KEY}`,
-].join("");
+const API_FAVOURITES = [BASE_API_URL, "/favourites"].join("");
+
+console.log(API_FAVOURITES);
 
 const API_FAVOURITES_DELETE = (id) => {
-  return `${BASE_API_URL}/favourites/${id}?api_key=${API_KEY}`;
+  return `${BASE_API_URL}/favourites/${id}`;
 };
 
 let favouritesImagesIDs = [];
@@ -29,11 +22,10 @@ const btn = document.querySelector(".main__button");
 
 btn.addEventListener("click", loadRandomCats);
 
-async function fetchData(urlAPI) {
+async function fetchData(urlAPI, options) {
   try {
-    const response = await fetch(urlAPI);
-    const data = await response.json();
-
+    const response = await fetch(urlAPI, options);
+    const data = await response.json();    
     return data;
   } catch (err) {
     console.log("Error name: " + err.name);
@@ -57,11 +49,11 @@ function renderRandomCats(data) {
   btnAddFav.appendChild(btnAddFavText);
 
   article.append(img, btnAddFav);
-  //
+
   btnAddFav.addEventListener("click", () => {
     checkDuplicated(data.id);
   });
-  //
+
   randomCatsContainer.appendChild(article);
 }
 
@@ -95,11 +87,11 @@ function checkDuplicated(id) {
 }
 
 async function addFavourite(id) {
-  const response = await fetch(API_FAVOURITES, {
+  const response = await fetchData(API_FAVOURITES, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      // API-KEY
+      "x-api-key": API_KEY,
     },
     body: JSON.stringify({
       image_id: id,
@@ -107,24 +99,31 @@ async function addFavourite(id) {
   });
 
   loadFavourites();
-
   // falta manejar el error res.status / .message
-  // const favorites = await response.json();
 
+  // const favorites = await response.json();
   // console.log('Add favourite func', favorites);
 }
 
 async function deleteFavourite(id) {
-  const response = await fetch(API_FAVOURITES_DELETE(id), {
+  const response = await fetchData(API_FAVOURITES_DELETE(id), {
     method: "DELETE",
+    headers: {      
+      "X-API-KEY": API_KEY,
+    },
   });
-  console.log("delete fav", response);
 
   loadFavourites();
 }
 
 async function loadFavourites() {
-  const favourites = await fetchData(API_FAVOURITES);
+  const favourites = await fetchData(API_FAVOURITES, {
+    method: "GET",
+    headers: {      
+      "X-API-KEY": API_KEY,
+    },
+  });
+
   const favouritesIDs = favourites.map((item) => item.id);
   favouritesImagesIDs = favourites.map((item) => item.image.id);
 
@@ -142,8 +141,7 @@ async function loadRandomCats() {
   randomCats.forEach((cat) => {
     renderRandomCats(cat);
   });
-
-  loadFavourites();
 }
 
+loadFavourites();
 loadRandomCats();
