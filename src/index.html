@@ -8,49 +8,13 @@
 
     <script defer src="./main.js"></script>
 
-    <style>
-      body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: rgb(235, 235, 235);
-
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      }
-
-      img {
-        width: 200px;
-        aspect-ratio: 1/1;
-        object-fit: cover;
-      }
-
-      main {
-        width: min-content;
-        margin: 20px;        
-      }
-
-      #random-cats-container {
-        display: grid;
-        grid-template: repeat(2, auto) / repeat(2, auto);
-        gap: 20px;
-      }
-
-      .favourites-container {
-        display: grid;
-        grid-template-columns: repeat(2, auto);
-        gap: 20px;
-      }
-
-      .card {
-        display: flex;
-        flex-direction: column;
-      }
-
-    </style>
+    <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
     <h1 class="main-title">Curso de Consumo de API REST con JS</h1>
+    
     <span class="spanError"></span>
+    
     <main class="main">
       <!-- Grilla -->
       <section id='random-cats-container'>
@@ -59,9 +23,23 @@
       <button class="main__button">Nuevos gatitos</button>
     </main>
 
+    <h2>Subir imagen</h2>      
+    <section class="upload-container">
+      <form id="form-upload">
+        <input type="file" name="file" id="file">
+        <br>
+        <button type="button" id="button-upload">Subir gatito</button>
+      </form>
+    </section>
+    
     <!-- Favoritos -->
     <h2>Favoritos</h2>      
     <section class="favourites-container">
+    </section>
+    
+    <!-- Mis imagenes -->
+    <h2>Mis imagenes</h2>      
+    <section class="my-images-container">
     </section>
 
     <!-- Footer?? -->

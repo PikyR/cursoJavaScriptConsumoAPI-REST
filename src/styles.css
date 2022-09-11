@@ -1,0 +1,36 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(235, 235, 235);
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+img {
+  width: 200px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+main {
+  width: min-content;
+  margin: 20px;        
+}
+
+#random-cats-container {
+  display: grid;
+  grid-template: repeat(2, auto) / repeat(2, auto);
+  gap: 20px;
+}
+
+.favourites-container, .my-images-container {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
