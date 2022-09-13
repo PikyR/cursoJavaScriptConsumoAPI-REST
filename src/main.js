@@ -58,9 +58,11 @@ function renderRandomCats(data) {
 
   const btnAddFav = document.createElement("button");
   btnAddFav.classList.add("card__button");
+  // btnAddFav.innerHTML = "&#9825";
+  btnAddFav.innerHTML = "&#9829";
 
-  const btnAddFavText = document.createTextNode("Fav");
-  btnAddFav.appendChild(btnAddFavText);
+  // const btnAddFavText = document.createTextNode(&#9825);
+  // btnAddFav.appendChild(btnAddFavText);
 
   article.append(img, btnAddFav);
 

@@ -1,0 +1,51 @@
+// Colors
+$color-white 		        :#FCF9F9;
+$color-background 	    :#EEECED;
+$color-text-light 	    :#E3E0E1;
+$color-text-mid 		    :#C6BBC1;
+$color-fav-active	      :#FB9FA6;
+$color-text-dark 	      :#7C7B7C;
+$color-background-dark  :#303030;
+
+// Fonts
+$font-primary: 'Quicksand', sans-serif;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+
+  font-family: $font-primary;
+  color: $color-text-dark;
+  background-color: $color-background;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+// CODIGO DE REFERENCIA
+
+
+
+// main {
+//   width: min-content;
+//   margin: 20px;        
+// }
+
+// .favourites-container, .my-images-container {
+//   display: grid;
+//   grid-template-columns: repeat(2, auto);
+//   gap: 20px;
+// }
+

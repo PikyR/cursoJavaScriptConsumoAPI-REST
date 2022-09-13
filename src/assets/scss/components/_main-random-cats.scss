@@ -1,0 +1,11 @@
+
+.main {
+  width: 320px; // min-width  
+}
+
+#random-cats-container {
+  padding: 1.4rem;
+  display: grid;
+  grid-template: repeat(2, auto) / repeat(2, auto);
+  gap: 1.4rem;  
+}
