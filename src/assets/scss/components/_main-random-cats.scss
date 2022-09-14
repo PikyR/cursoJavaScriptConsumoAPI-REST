@@ -1,11 +1,38 @@
-
 .main {
-  width: 320px; // min-width  
+  width: 320px; // min-width
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__button {
+    display: block;
+    width: 26rem;
+    margin-bottom: 1.4rem;
+    border: none;
+    border-radius: 0.8rem;
+    padding: 1.2rem 2rem;
+    background-color: $color-background-dark;
+    font-family: $font-primary;
+    font-size: 1.8rem;
+    font-weight: $font-regular;
+    color: $color-text-light;
+    
+    &:active {      
+      scale: 0.95;
+    }
+  }
+}
+
+.main-title {
+  font-size: 2rem;
+  font-weight: $font-bold;
+  margin-block: 1.8rem;
+  text-transform: uppercase;
 }
 
 #random-cats-container {
   padding: 1.4rem;
   display: grid;
   grid-template: repeat(2, auto) / repeat(2, auto);
-  gap: 1.4rem;  
+  gap: 1.4rem;
 }

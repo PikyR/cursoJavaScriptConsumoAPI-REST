@@ -20,6 +20,32 @@ body {
 
 .main {
   width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main__button {
+  display: block;
+  width: 26rem;
+  margin-bottom: 1.4rem;
+  border: none;
+  border-radius: 0.8rem;
+  padding: 1.2rem 2rem;
+  background-color: #303030;
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #E3E0E1;
+}
+.main__button:active {
+  scale: 0.95;
+}
+
+.main-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-block: 1.8rem;
+  text-transform: uppercase;
 }
 
 #random-cats-container {
@@ -48,7 +74,18 @@ body {
   border: none;
   background-color: transparent;
   margin-top: 0.6rem;
+  height: 2rem;
+  font-family: "Quicksand", sans-serif;
+  color: #7C7B7C;
+  cursor: pointer;
+}
+.card__button--random {
+  text-align: right;
+  padding-right: 0.6rem;
   font-size: 2rem;
+}
+
+.icon-favorite {
   color: #FB9FA6;
 }
 

@@ -24,6 +24,9 @@ const API_MY_IMAGES_DELETE = (imageID) => {
 let favouritesImagesIDs = [];
 let myImagesIDs = [];
 
+// Icons
+const favouriteActive = '';
+
 const spanError = document.querySelector(".spanError");
 // containers
 const randomCatsContainer = document.querySelector("#random-cats-container");
@@ -35,6 +38,7 @@ const btnUpload = document.querySelector("#button-upload");
 // add event listener
 btn.addEventListener("click", loadRandomCats);
 btnUpload.addEventListener("click", uploadImage);
+
 
 async function fetchData(urlAPI, options) {
   try {
@@ -57,16 +61,20 @@ function renderRandomCats(data) {
   img.src = data.url;
 
   const btnAddFav = document.createElement("button");
-  btnAddFav.classList.add("card__button");
-  // btnAddFav.innerHTML = "&#9825";
-  btnAddFav.innerHTML = "&#9829";
+  btnAddFav.classList.add("card__button", "card__button--random");
 
-  // const btnAddFavText = document.createTextNode(&#9825);
-  // btnAddFav.appendChild(btnAddFavText);
+  const iconFavourite = document.createElement('span')
+  iconFavourite.classList.add('icon-favorite_outline')
+  btnAddFav.append(iconFavourite);  
 
   article.append(img, btnAddFav);
 
   btnAddFav.addEventListener("click", () => {
+    if (!(favouritesImagesIDs.some(favID => favID === data.id))) {
+      iconFavourite.classList.remove('icon-favorite_outline');  
+      iconFavourite.classList.add('icon-favorite');
+    }
+    
     checkDuplicated(data.id);
   });
 
@@ -118,10 +126,10 @@ function renderFavourites(data, favouriteID) {
 
 function checkDuplicated(id) {
   if (favouritesImagesIDs.some((favID) => favID === id)) {
-    alert("Ya esta en favoritos");
+    alert("Ya esta en favoritos");    
     return;
   } else {
-    addFavourite(id);
+    addFavourite(id);    
   }
 }
 
