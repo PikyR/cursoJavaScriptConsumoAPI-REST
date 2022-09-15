@@ -27,9 +27,8 @@
     />
   </head>
   <body>
-    <h1 class="main-title">Gatitos random</h1>
+    <h1 class="main-title">Gatitos Random</h1>
     
-
     <span class="spanError"></span>
 
     <main class="main">
@@ -37,16 +36,17 @@
       <section id="random-cats-container">
         <!-- random cats -->
       </section>
-      <button class="main__button">Nuevos gatitos</button>
+      <button class="button button--main">Ver nuevos gatitos</button>
     </main>
 
-    <section class="upload-container">
-      <h2 class="upload-container">Subir imagen</h2>
-      <form id="form-upload">
-        <input type="file" name="file" id="file" />
-        <br />
-        <button type="button" id="button-upload">Subir gatito</button>
-      </form>
+    <section class="upload">
+      <div class="upload__container">
+        <h2 class="upload__title">Subir imagen</h2>
+        <form id="form-upload" class="upload__form">
+          <input type="file" name="file" id="file" class="upload__input"/>        
+          <button type="button" id="button-upload" class="button button--upload">Subir gatito</button>
+        </form>
+      </div>
     </section>
 
     <!-- Favoritos -->

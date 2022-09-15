@@ -1,19 +1,18 @@
 // Colors
-$color-white 		        :#FCF9F9;
-$color-background 	    :#EEECED;
-$color-text-light 	    :#E3E0E1;
-$color-text-mid 		    :#C6BBC1;
-$color-fav-active	      :#FB9FA6;
-$color-text-dark 	      :#7C7B7C;
-$color-background-dark  :#303030;
+$color-white: #fcf9f9;
+$color-background: #eeeced;
+$color-text-light: #e3e0e1;
+$color-text-mid: #c6bbc1;
+$color-fav-active: #fb9fa6;
+$color-text-dark: #7c7b7c;
+$color-background-dark: #303030;
 
 // Fonts
-$font-primary: 'Quicksand', sans-serif;
+$font-primary: "Quicksand", sans-serif;
 // Font weigths
 $font-thin: 300;
 $font-regular: 400;
 $font-bold: 700;
-
 
 * {
   margin: 0;
@@ -29,7 +28,7 @@ body {
   font-size: 1.6rem;
 
   font-family: $font-primary;
-  color: $color-text-dark;
+  color: $color-background-dark;
   background-color: $color-background;
 
   display: flex;
@@ -37,15 +36,29 @@ body {
   align-items: center;
 }
 
+.button {
+  display: block;
+  width: 26rem;
+  margin-bottom: 1.4rem;
+  border: none;
+  border-radius: 0.8rem;
+  padding: 1.2rem 2rem;
+  background-color: $color-background-dark;
+  font-family: $font-primary;
+  font-size: 1.8rem;
+  font-weight: $font-regular;
+  color: $color-text-light;
 
+  &:active {
+    scale: 0.95;
+  }
+}
 
 // CODIGO DE REFERENCIA
 
-
-
 // main {
 //   width: min-content;
-//   margin: 20px;        
+//   margin: 20px;
 // }
 
 // .favourites-container, .my-images-container {
@@ -53,4 +66,3 @@ body {
 //   grid-template-columns: repeat(2, auto);
 //   gap: 20px;
 // }
-

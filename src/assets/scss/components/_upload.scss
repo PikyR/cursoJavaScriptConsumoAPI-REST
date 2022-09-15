@@ -1,0 +1,27 @@
+.upload {
+  background-color: $color-text-mid;
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $color-background-dark;  
+
+  &__container {
+    max-width: 425px;    
+    text-align: center;
+  }
+
+  &__title {
+    margin-bottom: 2rem;
+  }
+  
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__input {
+    margin-bottom: 2rem;
+  }
+}

@@ -33,7 +33,7 @@ const randomCatsContainer = document.querySelector("#random-cats-container");
 const favouritesContainer = document.querySelector(".favourites-container");
 const myImagesContainer = document.querySelector(".my-images-container");
 // buttons
-const btn = document.querySelector(".main__button");
+const btn = document.querySelector(".button--main");
 const btnUpload = document.querySelector("#button-upload");
 // add event listener
 btn.addEventListener("click", loadRandomCats);
